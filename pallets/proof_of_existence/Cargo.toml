@@ -1,0 +1,56 @@
+[package]
+name = "pallet-poe"
+version = "0.1.0"
+description = "A pallet to experiment how to give a proof of presence in the storage"
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4.20"
+
+codec = { workspace = true }
+scale-info = { workspace = true, features = [
+	"derive",
+] }
+binary-merkle-tree = { default-features = false, workspace = true }
+
+# Substrate
+frame-benchmarking = { workspace = true, optional = true }
+frame-support = { default-features = false, workspace = true }
+frame-system = { default-features = false, workspace = true }
+sp-std = { default-features = false, workspace = true }
+sp-core = { default-features = false, workspace = true }
+pallet-timestamp = { default-features = false, workspace = true	}
+sp-io = { workspace = true }
+sp-runtime = { workspace = true }
+
+hp-poe = { default-features = false, workspace = true }
+
+[dev-dependencies]
+hex-literal = { version = "0.4.1" }
+
+[features]
+default = ["std"]
+runtime-benchmarks = [
+	"frame-benchmarking/runtime-benchmarks",
+	"frame-support/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
+]
+std = [
+	"codec/std",
+	"frame-benchmarking/std",
+	"frame-support/std",
+	"frame-system/std",
+	"sp-std/std",
+	"sp-core/std",
+	"sp-runtime/std",
+	"sp-io/std",
+	"scale-info/std",
+	"pallet-timestamp/std",
+	"hp-poe/std",
+	"binary-merkle-tree/std",
+]
+try-runtime = ["frame-support/try-runtime", "frame-system/try-runtime"]
