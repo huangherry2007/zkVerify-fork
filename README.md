@@ -1,1 +1,1 @@
-# NH stands for New Horizen
+Enhanced zkVerify
